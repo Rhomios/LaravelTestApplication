@@ -1,0 +1,169 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger with Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/notes/list": {
+            "get": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Get list of notes in Data base",
+                "operationId": "45146a0d749d2b7d451a2e729088db52",
+                "responses": {
+                    "200": {
+                        "description": "Successfully fetched the notes from the DataBase"
+                    },
+                    "404": {
+                        "description": "Notes not found or some error occured"
+                    }
+                }
+            }
+        },
+        "/api/notes/create": {
+            "post": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Add note to the DataBase",
+                "operationId": "6bec88daeb4be8d675619a1eb50615be",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Note's title",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "Note's content",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successfully added a note to the DataBase"
+                    },
+                    "404": {
+                        "description": "Notes not found or some error occured"
+                    }
+                }
+            }
+        },
+        "/api/notes/{id}": {
+            "get": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Get specified note by its Id",
+                "operationId": "4f26c25d4040d0ef0fa8d8a5ea9fa4da",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Note id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Notes have been not found"
+                    }
+                }
+            }
+        },
+        "/api/notes/{id}/update": {
+            "put": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Update existing note",
+                "description": "Returns updated note's data",
+                "operationId": "4090c39630bb8921889049d485a2dcbf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Note id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Note's title",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "Note's content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/notes/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Delete existing notes from DataBase",
+                "operationId": "bc227c794645fb998c0aaf3159fea9f3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Note id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    }
+}
